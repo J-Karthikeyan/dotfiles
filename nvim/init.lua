@@ -49,6 +49,8 @@ require("lazy").setup({
             "c",
             "cpp",
             "lua",
+            "r",
+            "tsx",
       },
       highlight = { enable = true },
     },
@@ -74,7 +76,7 @@ require("lazy").setup({
       require("mason").setup()
 
       require("mason-lspconfig").setup({
-        ensure_installed = { "pyright", "ts_ls", "clangd" },
+        ensure_installed = { "pyright", "ts_ls", "clangd", "r_language_server", "tailwindcss" },
       })
 
       vim.lsp.config("pyright", {
@@ -92,6 +94,8 @@ require("lazy").setup({
       vim.lsp.enable("pyright")
       vim.lsp.enable("ts_ls")
       vim.lsp.enable("clangd")
+      vim.lsp.enable("r_language_server")
+      vim.lsp.enable("tailwindcss")
 
       vim.keymap.set("n", "gd", vim.lsp.buf.definition)
       vim.keymap.set("n", "K", vim.lsp.buf.hover)
@@ -159,6 +163,9 @@ vim.opt.mouse = "a"
 vim.opt.lazyredraw = true
 
 local builtin = require("telescope.builtin")
+
+vim.fn.system("defaults write -g KeyRepeat -int 1")
+vim.fn.system("defaults write -g InitialKeyRepeat -int 2")
 
 vim.keymap.set("n", "<leader>ff", builtin.find_files)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep)
