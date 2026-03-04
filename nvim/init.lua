@@ -4,7 +4,7 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
-    "--filter=blob:none",
+   "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     lazypath,
   })
@@ -22,10 +22,14 @@ require("lazy").setup({
     config = function()
       vim.cmd("colorscheme base16-black-metal")
 
-      local bg_groups = { 
-        "Normal", "NormalFloat", "NormalNC", "LineNr", 
-        "SignColumn", "EndOfBuffer", "MsgArea", "Pmenu", "TelescopeBorder" 
-      }
+      -- Inside your base16-black-metal config function
+      local bg_groups = { "Normal", "NormalNC", "LineNr", "SignColumn", "EndOfBuffer" }
+      for _, group in ipairs(bg_groups) do
+        vim.api.nvim_set_hl(0, group, { bg = "none" })
+      end
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#191f22" }) 
+      vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#7cb3ba", bg = "#191f22" })
+
       for _, group in ipairs(bg_groups) do
         vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
       end
@@ -90,6 +94,15 @@ require("lazy").setup({
       vim.lsp.config("clangd", {
         capabilities = capabilities,
       })
+
+      local handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, { border = "rounded" }),
+      }
+
+      vim.lsp.config("r_language_server", { handlers = handlers })
+      vim.lsp.config("ts_ls", { handlers = handlers })
+      vim.lsp.config("pyright", { handlers = handlers })
 
       vim.lsp.enable("pyright")
       vim.lsp.enable("ts_ls")
@@ -156,16 +169,13 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.scrolloff = 8
+vim.opt.timeoutlen = 200
+vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 8
 vim.opt.mouse = "a"
 vim.opt.lazyredraw = true
 
 local builtin = require("telescope.builtin")
-
-vim.fn.system("defaults write -g KeyRepeat -int 1")
-vim.fn.system("defaults write -g InitialKeyRepeat -int 2")
 
 vim.keymap.set("n", "<leader>ff", builtin.find_files)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep)
