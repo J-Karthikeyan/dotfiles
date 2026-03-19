@@ -1,3 +1,10 @@
 .nvimlog
 lazy-lock.json
 .DS_Store
+
+dotfiles
+
+WORKFLOW.md
+
+# Don't track files with secrets
+zsh/.zshrc

@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# Tmux Sessionizer - quickly switch between project directories
+# Usage: bind to a key in tmux.conf
+# bind-key -n M-f run-shell "~/.config/tmux/tmux-sessionizer"
+
+# Add your common project directories here (space-separated)
+SEARCH_DIRS=(
+    "$HOME/dotfiles"
+    "$HOME/projects"
+    "$HOME/code"
+    "$HOME/dev"
+    "$HOME/work"
+)
+
+# Check if fzf is installed
+if ! command -v fzf &> /dev/null; then
+    echo "fzf is not installed. Install it with: brew install fzf"
+    exit 1
+fi
+
+# Find directories (only 2 levels deep to keep it fast)
+selected=$(
+    find "${SEARCH_DIRS[@]}" -maxdepth 2 -type d 2>/dev/null | \
+    grep -v "\.git" | \
+    sort -u | \
+    fzf --tmux --reverse --preview 'ls -la {}' --preview-window=right:50% --prompt="Select project: "
+)
+
+# Exit if nothing selected
+[[ -z $selected ]] && exit 0
+
+# Get basename for session name
+selected_name=$(basename "$selected" | tr . _)
+
+# Check if tmux is running
+tmux_running=$(pgrep tmux)
+
+# If not in tmux and tmux is not running, create new session
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s "$selected_name" -c "$selected"
+    exit 0
+fi
+
+# If session doesn't exist, create it
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+fi
+
+# Switch to the session
+if [[ -z $TMUX ]]; then
+    # Outside tmux, attach to it
+    tmux attach -t "$selected_name"
+else
+    # Inside tmux, switch client
+    tmux switch-client -t "$selected_name"
+fi

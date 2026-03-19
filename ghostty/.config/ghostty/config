@@ -1,0 +1,85 @@
+# Ghostty configuration
+# JetBrains IDE New Dark theme
+
+# =============================================================================
+# Font Configuration
+# =============================================================================
+font-family = "JetBrainsMono Nerd Font"
+font-size = 14
+
+# =============================================================================
+# Color Scheme (JetBrains IDE New Dark)
+# =============================================================================
+background = #191A1C
+foreground = #BCBEC4
+selection-background = #214283
+selection-foreground = #BCBEC4
+
+cursor-color = #CED0D6
+cursor-style = block
+cursor-text = #1E1F22
+
+# ANSI Colors (from jb.nvim palette.json)
+palette = 0=#000000
+palette = 1=#F75464
+palette = 2=#5F9A5C
+palette = 3=#D19A66
+palette = 4=#3993D4
+palette = 5=#A771BF
+palette = 6=#028E8E
+palette = 7=#CED0D6
+
+palette = 8=#595959
+palette = 9=#FF6B7A
+palette = 10=#6BCC62
+palette = 11=#E0CE70
+palette = 12=#5594FA
+palette = 13=#C092FA
+palette = 14=#47CCBD
+palette = 15=#FFFFFF
+# =============================================================================
+# Window & Appearance
+# =============================================================================
+background-opacity = 0.95
+background-blur = true
+
+window-padding-x = 2
+window-padding-y = 2
+
+# =============================================================================
+# Keybindings (Vim-style split navigation)
+# =============================================================================
+keybind = opt+h=goto_split:left
+keybind = opt+j=goto_split:bottom
+keybind = opt+k=goto_split:top
+keybind = opt+l=goto_split:right
+
+keybind = opt+shift+h=new_split:left
+keybind = opt+shift+j=new_split:down
+keybind = opt+shift+k=new_split:up
+keybind = opt+shift+l=new_split:right
+
+# Escape sequences for better terminal compatibility
+keybind = ctrl+left_bracket=text:\x1b
+keybind = shift+enter=text:\x1b\r
+
+# Alt key handling
+macos-option-as-alt = true
+keybind = alt+up=esc:[1;3A
+keybind = alt+down=esc:[1;3B
+keybind = alt+left=esc:[1;3D
+keybind = alt+right=esc:[1;3C
+
+# =============================================================================
+# Behavior
+# =============================================================================
+mouse-hide-while-typing = true
+
+# Title bar
+macos-titlebar-proxy-icon = hidden
+title = " "
+
+# =============================================================================
+# Custom Shader
+# =============================================================================
+custom-shader = ~/.config/ghostty/shaders/cursor.glsl
