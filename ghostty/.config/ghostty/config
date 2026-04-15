@@ -40,8 +40,8 @@ palette = 15=#FFFFFF
 # =============================================================================
 # Window & Appearance
 # =============================================================================
-background-opacity = 0.95
-background-blur = true
+background-opacity = 0.75
+background-blur = 6
 
 window-padding-x = 2
 window-padding-y = 2
@@ -70,10 +70,19 @@ keybind = alt+down=esc:[1;3B
 keybind = alt+left=esc:[1;3D
 keybind = alt+right=esc:[1;3C
 
+# Macos specifics
+macos-titlebar-style = tabs
+macos-option-as-alt = true 
+window-save-state = always
+window-vsync = true
+window-colorspace = display-p3
+quick-terminal-screen = macos-menu-bar
+
 # =============================================================================
 # Behavior
 # =============================================================================
 mouse-hide-while-typing = true
+scrollback-limit = 100000
 
 # Title bar
 macos-titlebar-proxy-icon = hidden

@@ -5,6 +5,15 @@ return {
       cmdline = {
         view = "cmdline", -- classic bottom cmdline, no float
       },
+      messages = {
+        enabled = false,
+      },
+      popupmenu = {
+        enabled = false,
+      },
+      notify = {
+        enabled = false,
+      },
     },
   },
 }

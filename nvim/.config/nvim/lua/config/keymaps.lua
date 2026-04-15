@@ -5,6 +5,12 @@
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result + center" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Prev search result + center" })
 
+-- Force <leader>fg to be live_grep (override LazyVim's git_files default)
+pcall(vim.keymap.del, "n", "<leader>fg")
+vim.keymap.set("n", "<leader>fg", function()
+  require("telescope.builtin").live_grep({ additional_args = { "--hidden" } })
+end, { desc = "Live Grep (includes hidden)" })
+
 -- Focus Neo-tree sidebar if open
 vim.keymap.set("n", "<leader>E", function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do

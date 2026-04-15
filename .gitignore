@@ -8,3 +8,6 @@ WORKFLOW.md
 
 # Don't track files with secrets
 zsh/.zshrc
+.claude
+.opencode
+usage.md

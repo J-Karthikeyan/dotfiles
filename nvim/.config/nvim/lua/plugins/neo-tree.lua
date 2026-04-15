@@ -25,7 +25,7 @@ return {
           deleted = "-",
           modified = "~",
           renamed = "r",
-          untracked = "?",
+          untracked = "",
           ignored = "i",
           unstaged = "U",
           staged = "S",

@@ -13,7 +13,13 @@ $character\
 """
 
 right_format = """
-$all
+$status\
+$cmd_duration\
+$jobs\
+$git_state\
+$conda\
+$aws\
+$kubernetes\
 """
 
 palette = "jetbrains"
@@ -29,8 +35,39 @@ success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
 vimcmd_symbol = "[: ](bold yellow)"
 
+[cmd_duration]
+min_time = 2_000
+format = "[ ⏱ $duration](overlay1) "
+
+[status]
+disabled = false
+format = "[$symbol$status ](red)"
+symbol = "✘ "
+
+[jobs]
+format = "[⚙ $number](bold blue) "
+number_threshold = 1
+
+[aws]
+disabled = false
+format = "[ $symbol$profile(\\($region\\))](bold peach) "
+symbol = "☁ "
+
+# [kubernetes]
+# disabled = false
+# format = "[⎈ $context](bold sky)[:$namespace](sapphire) "
+#
+# [[kubernetes.contexts]]
+# context_pattern = "arn:aws:eks:ap-south-1:147728078333:cluster/eks-kurukshetra"
+# context_alias = "eks-kurukshetra"
+
 [line_break]
-disabled = true
+disabled = false
+
+[python]
+disabled = false
+format = "[${symbol}(${version} )(\\($virtualenv\\) )](dimmed green)"
+symbol = "🐍 " 
 
 # Git remote URL symbol (github/gitlab/etc) with darker background
 [custom.giturl]
@@ -61,7 +98,7 @@ format = "[](crust)[$symbol$branch]($style)[](crust)"
 
 # Detailed git status
 [git_status]
-format = "[$staged$modified$renamed$conflicted$ahead_behind]($style)"
+format = "[$stashed$staged$deleted$modified$renamed$untracked$conflicted$ahead_behind]($style)"
 staged = "[+${count} ](green)"
 modified = "[!${count} ](yellow)"
 renamed = "[»${count} ](sapphire)"
@@ -93,7 +130,7 @@ ignore_timeout = true
 
 # Git state (during rebasing, merging, etc)
 [git_state]
-format = '[($state ](bold yellow)[$progress_current/$progress_total)](bold yellow)'
+format = '[($state)](bold yellow) [($progress_current/$progress_total)](bold yellow)'
 rebase = "REBASING"
 merge = "MERGING"
 revert = "REVERTING"
@@ -103,9 +140,6 @@ am = "AM"
 
 # Minimal language/config modules (no icons, just versions when needed)
 [package]
-disabled = true
-
-[python]
 disabled = true
 
 [nodejs]

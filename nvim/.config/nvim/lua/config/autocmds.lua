@@ -25,8 +25,9 @@ local colors = {
 
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
-    -- Set main background
-    vim.api.nvim_set_hl(0, "Normal", { bg = colors.bg })
+    -- Set main background transparent so terminal/wallpaper shows through
+    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
 
     local groups = {
       "NormalFloat",
@@ -67,9 +68,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       vim.api.nvim_set_hl(0, group, { bg = "NONE" })
     end
 
-    -- StatusLine - visible separator
-    vim.api.nvim_set_hl(0, "StatusLine", { fg = colors.fg, bg = colors.bg })
-    vim.api.nvim_set_hl(0, "StatusLineNC", { fg = colors.gray, bg = colors.bg })
+    -- StatusLine - transparent
+    vim.api.nvim_set_hl(0, "StatusLine", { fg = colors.fg, bg = "NONE" })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { fg = colors.gray, bg = "NONE" })
     vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.magenta, bg = "NONE" })
 
     -- Line numbers
@@ -111,6 +112,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "GitSignsChange", { fg = colors.blue, bg = "NONE" })
     vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = colors.red, bg = "NONE" })
     vim.api.nvim_set_hl(0, "GitSignsUntracked", { fg = colors.gray, bg = "NONE" })
+
+    -- Neo-tree: dim untracked so it doesn't shout orange
+    vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { fg = colors.gray, bg = "NONE" })
 
     -- Markdown headings
     for i = 1, 6 do

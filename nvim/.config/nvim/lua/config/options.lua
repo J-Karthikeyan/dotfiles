@@ -6,8 +6,12 @@ vim.opt.secure = true
 vim.opt.cursorline = false
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 
+-- Disable autoformat on save completely
+vim.g.autoformat = false
+
 -- Global statusline (no gap between nvim and tmux)
 vim.opt.laststatus = 3
+vim.opt.cmdheight = 0
 
 if vim.env.SSH_CONNECTION then
   vim.g.clipboard = {

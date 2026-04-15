@@ -1,6 +1,20 @@
 -- Extra plugins and configurations preserved from original setup
 
 return {
+  -- Seamless navigation between nvim splits and tmux panes
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft", "TmuxNavigateDown", "TmuxNavigateUp", "TmuxNavigateRight",
+    },
+    keys = {
+      { "<C-h>", "<cmd>TmuxNavigateLeft<cr>" },
+      { "<C-j>", "<cmd>TmuxNavigateDown<cr>" },
+      { "<C-k>", "<cmd>TmuxNavigateUp<cr>" },
+      { "<C-l>", "<cmd>TmuxNavigateRight<cr>" },
+    },
+  },
+
   -- Flash.nvim for quick navigation
   {
     "folke/flash.nvim",
@@ -23,7 +37,7 @@ return {
     keys = {
       { "<leader><space>", function() require("telescope.builtin").find_files({ hidden = true }) end, desc = "Find Files (hidden)" },
       { "<leader>ff", function() require("telescope.builtin").find_files({ hidden = true }) end, desc = "Find Files" },
-      { "<leader>fg", function() require("telescope.builtin").live_grep() end, desc = "Live Grep" },
+      -- Note: <leader>fg is overridden in telescope-overrides.lua to ensure it does live_grep
       { "<leader>fb", function() require("telescope.builtin").buffers() end, desc = "Buffers" },
       { "<leader>fh", function() require("telescope.builtin").help_tags() end, desc = "Help Tags" },
     },
