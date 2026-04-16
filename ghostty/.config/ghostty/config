@@ -71,7 +71,7 @@ keybind = alt+left=esc:[1;3D
 keybind = alt+right=esc:[1;3C
 
 # Macos specifics
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 macos-option-as-alt = true 
 window-save-state = always
 window-vsync = true
