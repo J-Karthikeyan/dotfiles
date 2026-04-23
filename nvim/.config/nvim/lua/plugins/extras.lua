@@ -1,6 +1,14 @@
 -- Extra plugins and configurations preserved from original setup
 
 return {
+  -- direnv integration: loads .envrc into nvim's environment so LSPs launched
+  -- from within Nix flake projects (like haskell-intro) get the correct GHC/HLS
+  -- from the flake's devShell rather than needing them installed globally.
+  {
+    "direnv/direnv.vim",
+    lazy = false,
+  },
+
   -- Seamless navigation between nvim splits and tmux panes
   {
     "christoomey/vim-tmux-navigator",
