@@ -33,10 +33,96 @@ return {
     },
   },
 
-  -- Bufferline configuration - disabled for cleaner look
+  -- Bufferline configuration - styled to match dark theme
   {
     "akinsho/bufferline.nvim",
-    enabled = false,
+    enabled = true,
+    opts = {
+      options = {
+        mode = "buffers",
+        numbers = "none",
+        close_command = "bdelete! %d",
+        right_mouse_command = "bdelete! %d",
+        left_mouse_command = "buffer %d",
+        middle_mouse_command = nil,
+        indicator = {
+          style = "underline",
+        },
+        buffer_close_icon = "",
+        modified_icon = "●",
+        close_icon = "",
+        left_trunc_marker = "",
+        right_trunc_marker = "",
+        max_name_length = 18,
+        max_prefix_length = 15,
+        tab_size = 18,
+        diagnostics = false,
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "",
+            highlight = "Directory",
+            separator = false,
+          },
+        },
+        color_icons = true,
+        show_buffer_icons = false,
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+        show_tab_indicators = true,
+        persist_buffer_sort = true,
+        separator_style = { "", "" },
+        enforce_regular_tabs = false,
+        always_show_bufferline = true,
+      },
+      highlights = {
+        fill = {
+          bg = "#191A1C",
+        },
+        background = {
+          fg = "#6B6F76",
+          bg = "#191A1C",
+        },
+        buffer_visible = {
+          fg = "#BCBEC4",
+          bg = "#191A1C",
+        },
+        buffer_selected = {
+          fg = "#BCBEC4",
+          bg = "#1c1c1e",
+          bold = true,
+          italic = false,
+        },
+        indicator_selected = {
+          fg = "#C092FA",
+          bg = "#1c1c1e",
+        },
+        separator = {
+          fg = "#191A1C",
+          bg = "#191A1C",
+        },
+        separator_visible = {
+          fg = "#191A1C",
+          bg = "#191A1C",
+        },
+        separator_selected = {
+          fg = "#191A1C",
+          bg = "#1c1c1e",
+        },
+        modified = {
+          fg = "#E0CE70",
+          bg = "#191A1C",
+        },
+        modified_visible = {
+          fg = "#E0CE70",
+          bg = "#191A1C",
+        },
+        modified_selected = {
+          fg = "#E0CE70",
+          bg = "#1c1c1e",
+        },
+      },
+    },
   },
 
   -- Telescope keymaps (preserved from original config)
@@ -83,7 +169,6 @@ return {
         pyright = {},
         ts_ls = {},
         clangd = {},
-        r_language_server = {},
         tailwindcss = {},
         rust_analyzer = {},
       },
