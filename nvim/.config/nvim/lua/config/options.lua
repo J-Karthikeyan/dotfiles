@@ -12,6 +12,14 @@ vim.g.autoformat = false
 -- Global statusline (no gap between nvim and tmux)
 vim.opt.laststatus = 3
 vim.opt.cmdheight = 0
+vim.opt.winbar = ""
+
+-- Force winbar off in every new window (some plugins re-enable it per-buffer)
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinNew" }, {
+  callback = function()
+    vim.opt_local.winbar = ""
+  end,
+})
 
 if vim.env.SSH_CONNECTION then
   vim.g.clipboard = {
