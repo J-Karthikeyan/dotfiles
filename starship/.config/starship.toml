@@ -22,12 +22,16 @@ $aws\
 $kubernetes\
 """
 
-palette = "jetbrains"
+palette = "kanagawa_dragon"
+# palette = "jetbrains"
 
 [directory]
-style = "sapphire"
-format = "[ $path ]($style)"
+style = "fg:#8ba4b0 bold"
+format = "[  $path]($style) "
 truncation_length = 4
+
+[directory.substitutions]
+"karthikeyan" = "perf.systems"
 
 [character]
 disabled = false
@@ -92,9 +96,8 @@ ignore_timeout = true
 
 # Git branch with darker powerline-style border (using crust for darker bg)
 [git_branch]
-symbol = "\uf418 "
-style = "fg:lavender bg:crust"
-format = "[](crust)[$symbol$branch]($style)[](crust)"
+symbol = " "
+format = "[](fg:#282727)[${symbol}${branch}](fg:#87A987 bg:#282727)[](fg:#282727)"
 
 # Detailed git status
 [git_status]
@@ -158,37 +161,66 @@ disabled = true
 symbol = "@"
 format = "[ $symbol$environment ](dimmed green)"
 
-[palettes.jetbrains]
+[palettes.kanagawa_dragon]
 # --- background ---
-crust = "#2B2D30"
-mantle = "#2B2D30"
-base = "#2B2D30"
+crust = "#181616"
+mantle = "#0d0c0c"
+base = "#1d1c19"
 
-surface0 = "#393B40"
-surface1 = "#43454A"
-surface2 = "#4E5156"
+surface0 = "#282727"
+surface1 = "#393836"
+surface2 = "#625e5a"
 
-overlay0 = "#707379"
-overlay1 = "#868A91"
-overlay2 = "#9AA5CE"
+overlay0 = "#767166"
+overlay1 = "#a6a69c"
+overlay2 = "#9e9b93"
 
 # --- text ---
-text = "#BCBEC4"
-subtext0 = "#CED0D6"
-subtext1 = "#DFE1E5"
+text = "#c5c9c5"
+subtext0 = "#a6a69c"
+subtext1 = "#C8C093"
 
-# --- accents jetbrains ---
-rosewater = "#F5E0DC"
-flamingo = "#F2CDCD"
-pink = "#F5C2E7"
-mauve = "#CBA6F7"
-red = "#F75464"
-maroon = "#E0AF68"
-peach = "#D19A66"
-yellow = "#D19A66"
-green = "#6EA368"
-teal = "#94E2D5"
-sky = "#7DCFFF"
-sapphire = "#74C7EC"
-blue = "#3877E9"
-lavender = "#E3C97C"
+# --- accents kanagawa-dragon ---
+rosewater = "#D27E99"
+flamingo = "#e46876"
+pink = "#957FB8"
+mauve = "#957FB8"
+red = "#c4746e"
+maroon = "#b6927b"
+peach = "#b98d7b"
+yellow = "#c4b28a"
+green = "#8a9a7b"
+teal = "#8ea4a2"
+sky = "#9CABCA"
+sapphire = "#8ba4b0"
+blue = "#7E9CD8"
+lavender = "#938AA9"
+
+# --- Old JetBrains palette (commented out) ---
+# [palettes.jetbrains]
+# crust = "#2B2D30"
+# mantle = "#2B2D30"
+# base = "#2B2D30"
+# surface0 = "#393B40"
+# surface1 = "#43454A"
+# surface2 = "#4E5156"
+# overlay0 = "#707379"
+# overlay1 = "#868A91"
+# overlay2 = "#9AA5CE"
+# text = "#BCBEC4"
+# subtext0 = "#CED0D6"
+# subtext1 = "#DFE1E5"
+# rosewater = "#F5E0DC"
+# flamingo = "#F2CDCD"
+# pink = "#F5C2E7"
+# mauve = "#CBA6F7"
+# red = "#F75464"
+# maroon = "#E0AF68"
+# peach = "#D19A66"
+# yellow = "#D19A66"
+# green = "#6EA368"
+# teal = "#94E2D5"
+# sky = "#7DCFFF"
+# sapphire = "#74C7EC"
+# blue = "#3877E9"
+# lavender = "#E3C97C"

@@ -8,40 +8,65 @@ font-family = "JetBrainsMono Nerd Font"
 font-size = 14
 
 # =============================================================================
-# Color Scheme (JetBrains IDE New Dark)
+# Color Scheme (Kanagawa Dragon)
 # =============================================================================
-background = #191A1C
-foreground = #BCBEC4
-selection-background = #214283
-selection-foreground = #BCBEC4
+background = #181616
 
-cursor-color = #CED0D6
+foreground = #c5c9c5
+selection-background = #2D4F67
+selection-foreground = #c5c9c5
+
+cursor-color = #C8C093
 cursor-style = block
-cursor-text = #1E1F22
+cursor-text = #181616
 
-# ANSI Colors (from jb.nvim palette.json)
-palette = 0=#000000
-palette = 1=#F75464
-palette = 2=#5F9A5C
-palette = 3=#D19A66
-palette = 4=#3993D4
-palette = 5=#A771BF
-palette = 6=#028E8E
-palette = 7=#CED0D6
+# ANSI Colors (kanagawa-dragon)
+palette = 0=#0d0c0c
+palette = 1=#c4746e
+palette = 2=#8a9a7b
+palette = 3=#c4b28a
+palette = 4=#8ba4b0
+palette = 5=#8992a7
+palette = 6=#8ea4a2
+palette = 7=#c5c9c5
 
-palette = 8=#595959
-palette = 9=#FF6B7A
-palette = 10=#6BCC62
-palette = 11=#E0CE70
-palette = 12=#5594FA
-palette = 13=#C092FA
-palette = 14=#47CCBD
-palette = 15=#FFFFFF
+palette = 8=#625e5a
+palette = 9=#e46876
+palette = 10=#87a987
+palette = 11=#e6c384
+palette = 12=#7E9CD8
+palette = 13=#957FB8
+palette = 14=#7AA89F
+palette = 15=#DCD7BA
+
+# --- Old JetBrains colors (commented out) ---
+# background = #191A1C
+# foreground = #BCBEC4
+# selection-background = #214283
+# selection-foreground = #BCBEC4
+# cursor-color = #CED0D6
+# cursor-text = #1E1F22
+# palette = 0=#000000
+# palette = 1=#F75464
+# palette = 2=#5F9A5C
+# palette = 3=#D19A66
+# palette = 4=#3993D4
+# palette = 5=#A771BF
+# palette = 6=#028E8E
+# palette = 7=#CED0D6
+# palette = 8=#595959
+# palette = 9=#FF6B7A
+# palette = 10=#6BCC62
+# palette = 11=#E0CE70
+# palette = 12=#5594FA
+# palette = 13=#C092FA
+# palette = 14=#47CCBD
+# palette = 15=#FFFFFF
 # =============================================================================
 # Window & Appearance
 # =============================================================================
-background-opacity = 0.80
-background-blur = 25
+background-opacity = 0.85
+background-blur = 5
 macos-titlebar-style = hidden
 window-padding-x = 8
 window-padding-y = 0

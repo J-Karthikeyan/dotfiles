@@ -6,9 +6,11 @@ dotfiles
 
 WORKFLOW.md
 
-# Don't track files with secrets
 zsh/.zshrc
+zsh/.zsh_secrets
 .claude
 .opencode
 usage.md
 temp
+
+*bak*

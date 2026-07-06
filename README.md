@@ -1,6 +1,7 @@
-# JetBrains Theme Dotfiles
+# Dotfiles
 
-- ghostty
-- zsh (oh-my-zsh, starship, antidote)
+- ghostty | kitty
+- zsh (oh-my-zsh)
+- starship
 - nvim (lazy.nvim, mason, lsp)
-- tmux
+- tmux (+ sessionizer)

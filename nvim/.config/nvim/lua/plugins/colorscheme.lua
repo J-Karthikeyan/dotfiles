@@ -1,19 +1,25 @@
 return {
   {
-    "nickkadutskyi/jb.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("jb").setup({
-        transparent = true,
-      })
-      vim.cmd("colorscheme jb")
-    end,
+    "rebelot/kanagawa.nvim",
+    opts = {
+      theme = "dragon",
+      transparent = true,
+
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
+    },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "jb",
+      colorscheme = "kanagawa-dragon",
     },
   },
 }

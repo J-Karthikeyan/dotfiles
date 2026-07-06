@@ -10,14 +10,19 @@ return {
       },
       servers = {
         r_language_server = {
-          root_dir = function(fname)
+          -- nvim 0.11+ passes bufnr (number) instead of fname (string); resolve
+          -- it to the buffer's path before handing to vim.fs.find.
+          root_dir = function(bufnr_or_fname)
+            local fname = type(bufnr_or_fname) == "number"
+              and vim.api.nvim_buf_get_name(bufnr_or_fname)
+              or bufnr_or_fname
             -- First try to find .lintr file
-            local lintr_dir = vim.fs.dirname(vim.fs.find('.lintr', { path = fname, upward = true })[1])
+            local lintr_dir = vim.fs.dirname(vim.fs.find(".lintr", { path = fname, upward = true })[1])
             if lintr_dir then
               return lintr_dir
             end
             -- Fall back to git root
-            local git_root = vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+            local git_root = vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
             if git_root then
               return git_root
             end
