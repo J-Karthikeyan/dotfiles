@@ -5,6 +5,11 @@ return {
       options = {
         theme = "kanagawa",
       },
+      sections = {
+        lualine_c = {
+          { "filename", path = 2 },
+        },
+      },
     },
   },
 }
