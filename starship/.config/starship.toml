@@ -9,6 +9,8 @@ $git_branch\
 ${custom.git_worktree}\
 $git_status\
 $line_break\
+$aws\
+$kubernetes\
 $character\
 """
 
@@ -18,8 +20,6 @@ $cmd_duration\
 $jobs\
 $git_state\
 $conda\
-$aws\
-$kubernetes\
 """
 
 palette = "kanagawa_dragon"
@@ -30,8 +30,6 @@ style = "fg:#8ba4b0 bold"
 format = "[  $path]($style) "
 truncation_length = 4
 
-[directory.substitutions]
-"karthikeyan" = "perf.systems"
 
 [character]
 disabled = false
@@ -56,14 +54,6 @@ number_threshold = 1
 disabled = false
 format = "[ $symbol$profile(\\($region\\))](bold peach) "
 symbol = "☁ "
-
-# [kubernetes]
-# disabled = false
-# format = "[⎈ $context](bold sky)[:$namespace](sapphire) "
-#
-# [[kubernetes.contexts]]
-# context_pattern = "arn:aws:eks:ap-south-1:147728078333:cluster/eks-kurukshetra"
-# context_alias = "eks-kurukshetra"
 
 [line_break]
 disabled = false

@@ -9,12 +9,37 @@ return {
         update_in_insert = false,
       },
       servers = {
+        hls = {
+          -- Use the haskell-language-server-wrapper from PATH (the Nix/omnix dev
+          -- shell provides it via direnv), NOT Mason's copy. Mason's HLS runs
+          -- against ghcup GHC and can't see Nix-provided packages like namma-dsl,
+          -- so its cradle fails and `gd`/hover return nothing.
+          mason = false,
+          -- Do NOT autostart HLS. On a large project like nammayatri, HLS drives
+          -- a full `cabal build` via hie-bios that spawns multiple ghc procs
+          -- (~1.5GB each), thrashes a 16GB machine into swap, and fills
+          -- demand instead with `:LspStart hls` when you actually need
+          -- hover/go-to-def, and `:LspStop hls` when done.
+          -- NOTE: the old lspconfig `autostart = false` flag does NOT work under
+          cmd = { "haskell-language-server-wrapper", "--lsp" },
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+          end,
+          settings = {
+            haskell = {
+              formattingProvider = "none",
+              plugin = {
+                importLens = { globalOn = false },
+                stan = { globalOn = false },
+              },
+            },
+          },
+        },
         r_language_server = {
           -- nvim 0.11+ passes bufnr (number) instead of fname (string); resolve
           -- it to the buffer's path before handing to vim.fs.find.
           root_dir = function(bufnr_or_fname)
-            local fname = type(bufnr_or_fname) == "number"
-              and vim.api.nvim_buf_get_name(bufnr_or_fname)
+            local fname = type(bufnr_or_fname) == "number" and vim.api.nvim_buf_get_name(bufnr_or_fname)
               or bufnr_or_fname
             -- First try to find .lintr file
             local lintr_dir = vim.fs.dirname(vim.fs.find(".lintr", { path = fname, upward = true })[1])
@@ -39,16 +64,21 @@ return {
           },
         },
       },
+      setup = {
+        hls = function(_, sopts)
+          vim.lsp.config("hls", sopts)
+          return true
+        end,
+      },
     },
   },
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       opts.formatters_by_ft = opts.formatters_by_ft or {}
-      opts.formatters_by_ft.typescript = { "prettier" }
       opts.formatters_by_ft.javascript = { "prettier" }
-      opts.formatters_by_ft.typescriptreact = { "prettier" }
       opts.formatters_by_ft.javascriptreact = { "prettier" }
+      opts.formatters_by_ft.haskell = {}
 
       opts.formatters = opts.formatters or {}
       opts.formatters.prettier = {

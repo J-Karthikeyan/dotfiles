@@ -21,7 +21,8 @@ selected=$(
   find "${SEARCH_DIRS[@]}" -maxdepth 2 -type d 2>/dev/null |
     grep -v "\.git" |
     sort -u |
-    fzf --tmux --reverse --preview 'ls -la {}' --preview-window=right:50% --prompt="Select project: "
+    fzf --reverse --preview 'ls -la {}' --preview-window=right:50% --prompt="Select project: " \
+      --color='bg:-1,bg+:-1,gutter:-1,preview-bg:-1,border:-1,info:#625e5a,prompt:#87a987,pointer:#c4746e,hl:#c4b28a,hl+:#e6c384,fg+:#c5c9c5,header:#8ea4a2'
 )
 
 # Exit if nothing selected
