@@ -1,4 +1,8 @@
 nerdfont: true
+# Don't auto-inject the agent status icon into the window format — it appends
+# OUTSIDE the window block and overlaps the active-window highlight. Instead we
+# reference #{@workmux_status} INSIDE the window format in .tmux.conf.
+status_format: false
 status_icons:
   working: ""
   waiting: "󰭻"
